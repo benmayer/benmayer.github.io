@@ -37,7 +37,7 @@ header{
   left:10%;
   right:10%;
   padding:.5em;
-  min-width: 320px;
+  
 
   background:white;
   border: 1px solid #F4F4F4;
@@ -59,7 +59,7 @@ h1{
 .header-nav{
   float:right;
 }
-[class^="nav-"]{
+.nav{
   display:inline-block;
   vertical-align: middle;
   margin:0;
@@ -237,3 +237,24 @@ article {
 
 }
 
+/*------------------------------------------------------------*/
+// mobile 
+/*------------------------------------------------------------*/
+
+@media screen and (max-width: 480px){
+  header {
+    left:5%;
+    right:5%;
+    min-width: 288px;
+  }
+  h1{
+    font-size:1.25em;
+  }
+  .nav  {
+    font-size: 1.25em;
+  }
+  .about{
+    padding: 5rem 1em;
+    h2{font-size:2em;}
+  } 
+}
