@@ -1,6 +1,7 @@
   function init() {
 
     var themap = document.getElementById('map'),
+        classes = themap.className;
         bensLondon = [
       {
         "featureType": "water",
@@ -84,11 +85,14 @@
 
     setMarkers(map);
 
+    
     google.maps.event.addListener(map, 'zoom_changed', function() {
         var zoomLevel = map.getZoom();
-        if (zoomLevel > 14 ) { themap.className = "closeup zoom"+zoomLevel; }
+        if (zoomLevel > 14 ) { 
+          themap.className = classes+" closeup zoom"+zoomLevel; 
+        }
         else{
-          themap.className = "";
+          themap.className = classes+" zoom"+zoomLevel;
         }
     });
 }
