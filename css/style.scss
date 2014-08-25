@@ -1,3 +1,5 @@
+$c-hl: #239acc;
+
 *{
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
@@ -27,7 +29,7 @@ a {
   -webkit-transition: color .1s ease;
   -o-transition: color .1s ease;
   transition: color .1s ease;
-  &:hover{color:#239acc;}
+  &:hover{color:$c-hl;}
 }
 
 header{
@@ -73,6 +75,7 @@ h1{
     display:block;
     padding:0 .25em;
   }
+  .active{color:$c-hl;}
 }
 .contact{
   font-size: 1.5em;

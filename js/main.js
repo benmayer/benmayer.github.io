@@ -7,6 +7,7 @@
         "featureType": "water",
         "stylers": [
           { 
+            // "color": "#77B0BA" //twitter color
             "color": "#239acc" 
             // "color": "#78CBEB"
           }
