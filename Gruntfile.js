@@ -56,10 +56,4 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['concat', 'uglify', 'sass', 'watch', ]);
 
-};'grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-
-  // Default task(s).
-  grunt.registerTask('default', ['connect', 'concat', 'uglify', 'sass', 'watch', ]);
-
 };

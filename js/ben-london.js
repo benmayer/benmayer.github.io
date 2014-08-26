@@ -146,23 +146,39 @@ function setMarkers(map){
 google.maps.event.addDomListener(window, 'load', init);
 
 
-
 $(document).ready(function(){
-	console.log("ready");
-	var hash = window.location.hash = "/map";
-
-	$(window).on('hashchange', function() {
-	  gethash(window.location.hash);
-	});
-
+	//get location -> if undefind set default to map
+	var hash = window.location.hash.replace('#/', '');
+	if(!hash){ hash = 'map';
+		window.location.hash = "/map";
+	}
+	$('html, body').scrollTop($("#"+hash).offset().top );
+	$('.nav-sections a[href="#'+hash+'"]').addClass('active');
+	
+	// change hash on click
 	$('a[href^="#"]').on('click', function(e){
-		e.preventDefault();
-		var link = $(this).attr('href').replace('#', '');
-		window.location.hash = "/"+link;
+	    e.preventDefault();
+	    var x = $(this).attr('href').replace('#', '');
+	    $('html, body').animate({ 
+	      scrollTop:  $("#"+x).offset().top
+	    });
+	});
+});
+$(window).bind('scroll',function(e){
+	// change hash on scroll
+	$('.section-content').each(function(){
+	   if (
+		   $(this).offset().top < window.pageYOffset + 10//begins before top
+		   && $(this).offset().top + $(this).height() > window.pageYOffset + 10//but ends in visible area //+ 10 allows you to change hash before it hits the top border
+	   ) {
+		   	var x = $(this).attr('id');
+	    	$('.nav-sections a').removeClass('active');
+	    	window.location.hash = '/'+ x;
+	    	$('.nav-sections a[href="#'+x+'"]').addClass('active');
+	  }
 	});
 });
 $(window).bind("load", function() {
-	console.log("loaded");
 	$(".fancybox").fancybox(
 		{
 	    padding    : 0,
@@ -171,28 +187,3 @@ $(window).bind("load", function() {
 	    prevEffect : 'fade',
 	});
 });
-$(document).bind('scroll',function(e){
-    // $('.section-content').each(function(){
-    // 	var content = $(this);
-    // 	 console.log( content.attr('id'), content.offset().top ,  ',',  content.height() ,',', window.pageYOffset + 10);
-    //     if (
-    //     	 content.offset().top < window.pageYOffset +10 //begins before top
-    //     	 && content.offset().top + content.height() > window.pageYOffset + 10 //but ends in visible area //+ 10 allows you to change hash before it hits the top border
-    //     ) {
-    //         window.location.hash = content.attr('id');
-    //     } 
-    // });
-});
-
-function gethash(url){
-	var hash = url.substring(2),
-	scrollTo = $("#"+hash);
-
-	$('.nav-sections a').removeClass('active');
-
-	$('body').animate({
-	   scrollTop: scrollTo.offset().top
-	});
-	
-	$('.nav-sections a[href="#'+hash+'"]').addClass('active');
-}
