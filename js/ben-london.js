@@ -147,6 +147,18 @@ google.maps.event.addDomListener(window, 'load', init);
 
 
 $(document).ready(function(){
+
+	var isTouch = ('ontouchstart' in window);
+	var h = $(window).height();
+	var ph = $('.section').height();
+
+	if(isTouch){
+		$('body').addClass("istouch");
+	}
+	if (ph < h ){  // check if css vh is working, if not fix with js on load #closeenough. 
+		$('.section').height(h);
+	}
+
 	//get location -> if undefind set default to map
 	var hash = window.location.hash.replace('#/', '');
 	if(!hash){ hash = 'map';
@@ -154,7 +166,7 @@ $(document).ready(function(){
 	}
 	$('html, body').scrollTop($("#"+hash).offset().top );
 	$('.nav-sections a[href="#'+hash+'"]').addClass('active');
-	
+
 	// change hash on click
 	$('a[href^="#"]').on('click', function(e){
 	    e.preventDefault();
@@ -177,6 +189,8 @@ $(window).bind('scroll',function(e){
 	    	$('.nav-sections a[href="#'+x+'"]').addClass('active');
 	  }
 	});
+
+	$('.move').addClass('.moved');
 });
 $(window).bind("load", function() {
 	$(".fancybox").fancybox(
