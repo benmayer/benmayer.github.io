@@ -1,4 +1,18 @@
 $(document).ready(function(){
+	$.fn.visible = function(partial) {
+	  
+	    var $t            = $(this),
+	        $w            = $(window),
+	        viewTop       = $w.scrollTop(),
+	        viewBottom    = viewTop + $w.height(),
+	        _top          = $t.offset().top,
+	        _bottom       = _top + $t.height(),
+	        compareTop    = partial === true ? _bottom : _top,
+	        compareBottom = partial === true ? _top : _bottom;
+	  
+	  return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+	};
 
 	var isTouch = ('ontouchstart' in window);
 	var h = $(window).height();
@@ -8,7 +22,7 @@ $(document).ready(function(){
 		$('body').addClass("istouch");
 	}
 	if (ph < h ){  // check if css vh is working, if not fix with js on load #closeenough. 
-		$('.section').height(h);
+		$('.section').css('min-height', h);
 	}
 
 	//get location -> if undefind set default to map
@@ -41,14 +55,20 @@ $(window).bind('scroll',function(e){
 	    	$('.nav-sections a[href="#'+x+'"]').addClass('active');
 	  }
 	});
+	$(".move").each(function(i, el) {
+	  var el = $(el);
+	  if (el.visible(true)) {
+	    el.addClass("in");
+	  } 
+	});
 
-	$('.move').addClass('.moved');
+	
 });
 $(window).bind("load", function() {
 	$(".fancybox").fancybox(
 		{
 	    padding    : 0,
-	    margin     : 5,
+	    margin     : 10,
 	    nextEffect : 'fade',
 	    prevEffect : 'fade',
 	});

@@ -38,12 +38,15 @@
           </ul>
         </div>
       </header>
-      <div class="noscript">
-        <noscript>Onfortunatly there isn't much to see here without JavaScript turned on.</noscript>
-      </div>
 
       <div class="section section-map">
-        <div id="map" class="section-content map"></div>
+        <div id="map" class="section-content map">
+          <div class="noscript">
+            <span>
+              <noscript>You'll need to turn JavaScript back on for this map to work.</noscript>
+            </span>
+          </div>
+        </div>
         <div class="section-footer">
           <a class="scroll-down" href="#about">
             <small>about me</small>
@@ -54,10 +57,10 @@
 
       <div id="section-about" class="section section-about">
         <div id="about" class="section-content about">
-          <h2>hi, i'm ben, i make websites.</h2>
+          <h2 class="move">hi, i'm ben, i make websites.</h2>
           <article>
-            <p >this is my personal map of london, the way i see it.</p>
-            <div class="contact">
+            <p class="move">this is my personal map of london.</p>
+            <div class="contact move">
               <a href="http://twitter.com/mayer_ben" class="fa fa-twitter" rel="me"></a>
               <a href="http://instagram.com/mayer_ben" class="fa fa-instagram" rel="me"></a>
             </div>
@@ -88,8 +91,8 @@
         tag.rel = 'stylesheet';
         document.head.appendChild(tag);
       }
-      loadStyle('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
-      loadStyle('src/jquery.fancybox.css?v=2.1.5');
+      // loadStyle('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+      loadStyle('css/jquery.fancybox.css?v=2.1.5');
 
       loadScript('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
       loadScript('http://maps.google.com/maps/api/js?sensor=false');

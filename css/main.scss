@@ -1,0 +1,23 @@
+@import "_inc/_normalize";
+
+/*------------------------------------------------------------*/
+// variables 
+/*------------------------------------------------------------*/
+$c-hl: #239acc;
+
+
+
+
+@import "font-awesome";
+@import "style";
+
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}

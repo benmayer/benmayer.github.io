@@ -2,6 +2,11 @@
 
     var themap = document.getElementById('map'),
         classes = themap.className;
+        zoom = 13;
+
+        if ( window.innerWidth < 480) {zoom = 12}
+
+
         bensLondon = [
       {
         "featureType": "water",
@@ -64,7 +69,7 @@
     ];
     
     var mapOptions = {
-      zoom: 13,
+      zoom: zoom,
       center: new google.maps.LatLng(51.5191113,-0.1084786 ),
       disableDefaultUI: true,
       mapTypeControlOptions: {
